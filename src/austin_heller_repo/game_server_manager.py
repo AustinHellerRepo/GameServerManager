@@ -18,9 +18,12 @@ class StringEnum():
 
 
 class GameServerManagerMessageTypeEnum(StringEnum):
-	GameStartRequested = "game_start_requested"
+	GameStartRequest = "game_start_request"
+	GameStartResponse = "game_start_response"
+	AuthenticateClientRequest = "authenticate_client_request"
+	AuthenticateClientResponse = "authenticate_client_response"
 	ClientStateInformation = "client_state_information"
-	ServerToClientResponse = "server_response"
+	ServerToClientResponse = "server_to_client_response"
 	GameCompleted = "game_completed"
 
 
