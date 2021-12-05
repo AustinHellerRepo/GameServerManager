@@ -3,7 +3,7 @@ from austin_heller_repo.common import StringEnum
 from austin_heller_repo.socket import ServerSocketFactory, ServerSocket, ClientSocket
 from austin_heller_repo.threading import Semaphore
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Callable
 import json
 
 
@@ -105,6 +105,10 @@ class GameServerManagerServer(ABC):
 		self.__client_sockets.append(client_socket)
 		self.__client_sockets_semaphore.release()
 
+		def send_response_method(game_server_manager_message: GameServerManagerMessage):
+			game_server_manager_message_json_string = json.dumps(game_server_manager_message.to_json())
+			client_socket.write(game_server_manager_message_json_string)
+
 		while self.__is_client_sockets_active:
 			game_server_manager_message_json_string = client_socket.read()
 			game_server_manager_message = GameServerManagerMessage.parse_from_json(
@@ -113,7 +117,7 @@ class GameServerManagerServer(ABC):
 			try:
 				self.process_message(
 					game_server_manager_message=game_server_manager_message,
-					client_socket=client_socket
+					send_response_method=send_response_method
 				)
 			except Exception as ex:
 				print(f"__on_accepted_client_method: process_message: ex: {ex}")
@@ -128,7 +132,7 @@ class GameServerManagerServer(ABC):
 		)
 
 	@abstractmethod
-	def process_message(self, *, game_server_manager_message: GameServerManagerMessage, client_socket: ClientSocket):
+	def process_message(self, *, game_server_manager_message: GameServerManagerMessage, send_response_method: Callable[[GameServerManagerMessage], None]):
 		raise NotImplementedError()
 
 	def stop(self):
