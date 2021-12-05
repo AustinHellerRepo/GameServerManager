@@ -112,7 +112,8 @@ class GameServerManagerServer(ABC):
 			)
 			try:
 				self.process_message(
-					game_server_manager_message=game_server_manager_message
+					game_server_manager_message=game_server_manager_message,
+					client_socket=client_socket
 				)
 			except Exception as ex:
 				print(f"__on_accepted_client_method: process_message: ex: {ex}")
@@ -127,7 +128,7 @@ class GameServerManagerServer(ABC):
 		)
 
 	@abstractmethod
-	def process_message(self, *, game_server_manager_message: GameServerManagerMessage):
+	def process_message(self, *, game_server_manager_message: GameServerManagerMessage, client_socket: ClientSocket):
 		raise NotImplementedError()
 
 	def stop(self):
