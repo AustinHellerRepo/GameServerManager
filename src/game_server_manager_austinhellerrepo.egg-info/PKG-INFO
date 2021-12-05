@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: game-server-manager-austinhellerrepo
-Version: 0.0.1
+Version: 0.0.3
 Summary: A package that permits expansion and encapsulates the functioning of a game server
 Home-page: https://github.com/AustinHellerRepo/GameServerManager
 Author: Austin Heller

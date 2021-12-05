@@ -1,0 +1,3 @@
+common-austinhellerrepo@ git+https://github.com/AustinHellerRepo/Common
+socket-austinhellerrepo@ git+https://github.com/AustinHellerRepo/Socket
+threading-austinhellerrepo@ git+https://github.com/AustinHellerRepo/Threading

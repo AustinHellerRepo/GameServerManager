@@ -6,4 +6,5 @@ src/austin_heller_repo/game_server_manager.py
 src/game_server_manager_austinhellerrepo.egg-info/PKG-INFO
 src/game_server_manager_austinhellerrepo.egg-info/SOURCES.txt
 src/game_server_manager_austinhellerrepo.egg-info/dependency_links.txt
+src/game_server_manager_austinhellerrepo.egg-info/requires.txt
 src/game_server_manager_austinhellerrepo.egg-info/top_level.txt
